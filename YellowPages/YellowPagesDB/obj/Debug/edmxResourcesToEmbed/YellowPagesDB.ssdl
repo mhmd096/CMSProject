@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GalleryYellowbookModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="varchar" MaxLength="50" />
+    <Property Name="Order" Type="int" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="10" />
+    <Property Name="Timestamp" Type="date" />
+    <Property Name="Keywords" Type="varchar" MaxLength="50" />
+    <Property Name="CategoryID" Type="bigint" />
+    <Property Name="Picturelink" Type="varchar" MaxLength="50" />
+    <Property Name="UnitID" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Items">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemName" Type="varchar" MaxLength="50" />
+    <Property Name="Subject" Type="varchar" MaxLength="50" />
+    <Property Name="Body" Type="varchar" MaxLength="50" />
+    <Property Name="Order" Type="int" />
+    <Property Name="isBanner" Type="varchar" MaxLength="10" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="20" />
+    <Property Name="Price" Type="numeric" Precision="20" Scale="4" />
+    <Property Name="Email" Type="varchar" MaxLength="20" />
+    <Property Name="Website" Type="varchar" MaxLength="20" />
+    <Property Name="FacebookLink" Type="varchar" MaxLength="20" />
+    <Property Name="InstagramLink" Type="varchar" MaxLength="20" />
+    <Property Name="OtherLinks" Type="varchar" MaxLength="20" />
+    <Property Name="Notes" Type="varchar" MaxLength="100" />
+    <Property Name="Timestamp" Type="date" />
+    <Property Name="Keywords" Type="varchar" MaxLength="50" />
+    <Property Name="CategoryID" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pictures">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Picturelink" Type="varchar" MaxLength="20" />
+    <Property Name="isMain" Type="bit" Nullable="false" />
+    <Property Name="ThumbLink" Type="varchar" MaxLength="20" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Order" Type="int" />
+    <Property Name="Notes" Type="varchar" MaxLength="100" />
+    <Property Name="Timestamp" Type="date" />
+    <Property Name="ItemID" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Units">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UnitName" Type="varchar" MaxLength="50" />
+    <Property Name="Country" Type="varchar" MaxLength="50" />
+    <Property Name="City" Type="varchar" MaxLength="50" />
+    <Property Name="RegionName" Type="varchar" MaxLength="50" />
+    <Property Name="Address" Type="varchar" MaxLength="50" />
+    <Property Name="Notes" Type="varchar" MaxLength="100" />
+    <Property Name="Timestamp" Type="date" />
+    <Property Name="Keywords" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__Categorie__UnitI__440B1D61">
+    <End Role="Units" Type="Self.Units" Multiplicity="1" />
+    <End Role="Categories" Type="Self.Categories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Units">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Categories">
+        <PropertyRef Name="UnitID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Items__CategoryI__49C3F6B7">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+    <End Role="Items" Type="Self.Items" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Items">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Pictures__ItemID__4CA06362">
+    <End Role="Items" Type="Self.Items" Multiplicity="1" />
+    <End Role="Pictures" Type="Self.Pictures" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Items">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Pictures">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GalleryYellowbookModelStoreContainer">
+    <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pictures" EntityType="Self.Pictures" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Units" EntityType="Self.Units" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Categorie__UnitI__440B1D61" Association="Self.FK__Categorie__UnitI__440B1D61">
+      <End Role="Units" EntitySet="Units" />
+      <End Role="Categories" EntitySet="Categories" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Items__CategoryI__49C3F6B7" Association="Self.FK__Items__CategoryI__49C3F6B7">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Items" EntitySet="Items" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Pictures__ItemID__4CA06362" Association="Self.FK__Pictures__ItemID__4CA06362">
+      <End Role="Items" EntitySet="Items" />
+      <End Role="Pictures" EntitySet="Pictures" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

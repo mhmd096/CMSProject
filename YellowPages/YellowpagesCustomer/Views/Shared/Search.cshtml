@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+                    @using (Html.BeginForm("SearchbyUnit", "Home", FormMethod.Get, new { @class = "navbar-form navbar-right" }))
+                    {
+                        <div class="form-group container">
+                            @Html.DropDownList("city", new SelectList(ViewBag.cities, "ID", "City"), new { Style = "height:45px" })
+                            <input type="text" name="name" class="s" placeholder="Search......" required />
+
+                            <input type="submit" value="Search" class="btn btn-secondary btn-md" style="height:45px" />
+                        </div>
+                    }
+    
+</body>
+</html>

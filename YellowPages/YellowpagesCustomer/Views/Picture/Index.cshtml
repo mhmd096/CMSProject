@@ -1,0 +1,21 @@
+﻿@model IEnumerable<YellowPagesDB.Picture>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" />
+    <h2 style="text-align:center">Gallery</h2><br />
+    <section class="gallery-block grid-gallery">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model) {
+                <div class="col-md-6 col-lg-4 item">
+                    @{var img = new FileInfo(item.Picturelink);}
+                    <a class="lightbox" href="@Url.Content(String.Format("~/img/{0}", img.Name))">
+                        <img class="img-fluid image scale-on-hover" src="@Url.Content(String.Format("~/img/{0}", img.Name))">
+                    </a>
+                </div>
+                }
+            </div>
+        </div>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script>
+            baguetteBox.run('.grid-gallery', { animation: 'slideIn'});
+    </script>

@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GalleryYellowbookModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="50" />
+          <Property Name="Order" Type="int" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="10" />
+          <Property Name="Timestamp" Type="date" />
+          <Property Name="Keywords" Type="varchar" MaxLength="50" />
+          <Property Name="CategoryID" Type="bigint" />
+          <Property Name="Picturelink" Type="varchar" MaxLength="50" />
+          <Property Name="UnitID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Items">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemName" Type="varchar" MaxLength="50" />
+          <Property Name="Subject" Type="varchar" MaxLength="50" />
+          <Property Name="Body" Type="varchar" MaxLength="50" />
+          <Property Name="Order" Type="int" />
+          <Property Name="isBanner" Type="varchar" MaxLength="10" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="20" />
+          <Property Name="Price" Type="numeric" Precision="20" Scale="4" />
+          <Property Name="Email" Type="varchar" MaxLength="20" />
+          <Property Name="Website" Type="varchar" MaxLength="20" />
+          <Property Name="FacebookLink" Type="varchar" MaxLength="20" />
+          <Property Name="InstagramLink" Type="varchar" MaxLength="20" />
+          <Property Name="OtherLinks" Type="varchar" MaxLength="20" />
+          <Property Name="Notes" Type="varchar" MaxLength="100" />
+          <Property Name="Timestamp" Type="date" />
+          <Property Name="Keywords" Type="varchar" MaxLength="50" />
+          <Property Name="CategoryID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pictures">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Picturelink" Type="varchar" MaxLength="20" />
+          <Property Name="isMain" Type="bit" Nullable="false" />
+          <Property Name="ThumbLink" Type="varchar" MaxLength="20" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Order" Type="int" />
+          <Property Name="Notes" Type="varchar" MaxLength="100" />
+          <Property Name="Timestamp" Type="date" />
+          <Property Name="ItemID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Units">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnitName" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="RegionName" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="Notes" Type="varchar" MaxLength="100" />
+          <Property Name="Timestamp" Type="date" />
+          <Property Name="Keywords" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__Categorie__UnitI__440B1D61">
+          <End Role="Units" Type="Self.Units" Multiplicity="1" />
+          <End Role="Categories" Type="Self.Categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Units">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Categories">
+              <PropertyRef Name="UnitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Items__CategoryI__49C3F6B7">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="Items" Type="Self.Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pictures__ItemID__4CA06362">
+          <End Role="Items" Type="Self.Items" Multiplicity="1" />
+          <End Role="Pictures" Type="Self.Pictures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Pictures">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GalleryYellowbookModelStoreContainer">
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pictures" EntityType="Self.Pictures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Units" EntityType="Self.Units" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Categorie__UnitI__440B1D61" Association="Self.FK__Categorie__UnitI__440B1D61">
+            <End Role="Units" EntitySet="Units" />
+            <End Role="Categories" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Items__CategoryI__49C3F6B7" Association="Self.FK__Items__CategoryI__49C3F6B7">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pictures__ItemID__4CA06362" Association="Self.FK__Pictures__ItemID__4CA06362">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="Pictures" EntitySet="Pictures" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GalleryYellowbookModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Order" Type="Int32" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Timestamp" Type="DateTime" Precision="0" />
+          <Property Name="Keywords" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryID" Type="Int64" />
+          <Property Name="Picturelink" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UnitID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Unit" Relationship="Self.FK__Categorie__UnitI__440B1D61" FromRole="Categories" ToRole="Units" />
+          <NavigationProperty Name="Items" Relationship="Self.FK__Items__CategoryI__49C3F6B7" FromRole="Categories" ToRole="Items" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Body" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Order" Type="Int32" />
+          <Property Name="isBanner" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Precision="20" Scale="4" />
+          <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Website" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FacebookLink" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="InstagramLink" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="OtherLinks" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Notes" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Timestamp" Type="DateTime" Precision="0" />
+          <Property Name="Keywords" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Items__CategoryI__49C3F6B7" FromRole="Items" ToRole="Categories" />
+          <NavigationProperty Name="Pictures" Relationship="Self.FK__Pictures__ItemID__4CA06362" FromRole="Items" ToRole="Pictures" />
+        </EntityType>
+        <EntityType Name="Picture">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Picturelink" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="isMain" Type="Boolean" Nullable="false" />
+          <Property Name="ThumbLink" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Order" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Timestamp" Type="DateTime" Precision="0" />
+          <Property Name="ItemID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Item" Relationship="Self.FK__Pictures__ItemID__4CA06362" FromRole="Pictures" ToRole="Items" />
+        </EntityType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RegionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Notes" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Timestamp" Type="DateTime" Precision="0" />
+          <Property Name="Keywords" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Categories" Relationship="Self.FK__Categorie__UnitI__440B1D61" FromRole="Units" ToRole="Categories" />
+        </EntityType>
+        <Association Name="FK__Categorie__UnitI__440B1D61">
+          <End Role="Units" Type="Self.Unit" Multiplicity="1" />
+          <End Role="Categories" Type="Self.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Units">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Categories">
+              <PropertyRef Name="UnitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Items__CategoryI__49C3F6B7">
+          <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+          <End Role="Items" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pictures__ItemID__4CA06362">
+          <End Role="Items" Type="Self.Item" Multiplicity="1" />
+          <End Role="Pictures" Type="Self.Picture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Pictures">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="YellowbookEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Items" EntityType="Self.Item" />
+          <EntitySet Name="Pictures" EntityType="Self.Picture" />
+          <EntitySet Name="Units" EntityType="Self.Unit" />
+          <AssociationSet Name="FK__Categorie__UnitI__440B1D61" Association="Self.FK__Categorie__UnitI__440B1D61">
+            <End Role="Units" EntitySet="Units" />
+            <End Role="Categories" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Items__CategoryI__49C3F6B7" Association="Self.FK__Items__CategoryI__49C3F6B7">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pictures__ItemID__4CA06362" Association="Self.FK__Pictures__ItemID__4CA06362">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="Pictures" EntitySet="Pictures" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GalleryYellowbookModelStoreContainer" CdmEntityContainer="YellowbookEntities">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="GalleryYellowbookModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="Picturelink" ColumnName="Picturelink" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="GalleryYellowbookModel.Item">
+              <MappingFragment StoreEntitySet="Items">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="isBanner" ColumnName="isBanner" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="FacebookLink" ColumnName="FacebookLink" />
+                <ScalarProperty Name="InstagramLink" ColumnName="InstagramLink" />
+                <ScalarProperty Name="OtherLinks" ColumnName="OtherLinks" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pictures">
+            <EntityTypeMapping TypeName="GalleryYellowbookModel.Picture">
+              <MappingFragment StoreEntitySet="Pictures">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Picturelink" ColumnName="Picturelink" />
+                <ScalarProperty Name="isMain" ColumnName="isMain" />
+                <ScalarProperty Name="ThumbLink" ColumnName="ThumbLink" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Units">
+            <EntityTypeMapping TypeName="GalleryYellowbookModel.Unit">
+              <MappingFragment StoreEntitySet="Units">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="RegionName" ColumnName="RegionName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

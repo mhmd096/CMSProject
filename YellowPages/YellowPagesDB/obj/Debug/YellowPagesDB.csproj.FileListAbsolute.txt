@@ -1,0 +1,10 @@
+C:\Users\Alaa\Documents\Visual Studio 2015\Projects\YellowPages\YellowPagesDB\bin\Debug\YellowPagesDB.dll.config
+C:\Users\Alaa\Documents\Visual Studio 2015\Projects\YellowPages\YellowPagesDB\bin\Debug\YellowPagesDB.dll
+C:\Users\Alaa\Documents\Visual Studio 2015\Projects\YellowPages\YellowPagesDB\bin\Debug\YellowPagesDB.pdb
+C:\Users\Alaa\Documents\Visual Studio 2015\Projects\YellowPages\YellowPagesDB\bin\Debug\EntityFramework.dll
+C:\Users\Alaa\Documents\Visual Studio 2015\Projects\YellowPages\YellowPagesDB\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Alaa\Documents\Visual Studio 2015\Projects\YellowPages\YellowPagesDB\bin\Debug\EntityFramework.xml
+C:\Users\Alaa\Documents\Visual Studio 2015\Projects\YellowPages\YellowPagesDB\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Alaa\Documents\Visual Studio 2015\Projects\YellowPages\YellowPagesDB\obj\Debug\YellowPagesDB.csprojResolveAssemblyReference.cache
+C:\Users\Alaa\Documents\Visual Studio 2015\Projects\YellowPages\YellowPagesDB\obj\Debug\YellowPagesDB.dll
+C:\Users\Alaa\Documents\Visual Studio 2015\Projects\YellowPages\YellowPagesDB\obj\Debug\YellowPagesDB.pdb

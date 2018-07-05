@@ -1,0 +1,65 @@
+﻿@model IEnumerable<YellowPagesDB.Item>
+@using YellowPagesDB
+@{
+    ViewBag.Title = "SearchbyUnit";
+}
+<br /><br />
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        Picture pic = null;
+        if (item.Pictures.Count != 0)
+        {
+            try { pic = item.Pictures.First<Picture>(p => p.isMain == true); }
+            catch { }
+        }
+        <div class="container-fluid" style="border:1px solid black;background-color:whitesmoke;border-radius:5px">
+            <div class="row">
+                <div class="col-lg-11 col-xs-12 col-md-8 col-md-4 col-sm-4">
+                    <h2 style="margin-left:13px">@Html.DisplayFor(modelItem => item.ItemName)</h2>
+                    @if (pic != null)
+                    {
+                        if (pic.Picturelink != null)
+                        {
+                            var img = new FileInfo(pic.Picturelink);
+                            <img src="@Url.Content(String.Format("~/img/items/{0}", img.Name))" style="width:150px;height:150px;float:right;margin-right:5px;margin-bottom:70px" />
+                        }
+                    }
+                    <br />
+                    <h4 style="margin-left:13px">@Html.DisplayFor(modelItem => item.Subject)</h4>
+                    @if (item.Keywords != null)
+                    {
+                        <h4 style="margin-left:13px">Keywords: @Html.DisplayFor(modelItem => item.Keywords)</h4>
+                    }
+                    @if (item.Price != null)
+                    {<h4 style="margin-left:13px">Price: @Html.DisplayFor(modelItem => item.Price)</h4>}
+                    @if (item.PhoneNumber != null)
+                    {
+                        <h4 style="margin-left:13px">Tel: @Html.DisplayFor(modelItem => item.PhoneNumber)</h4>
+                    }<br />
+                    @if (item.Email != null)
+                    { <img src="@Url.Content("~/Images/download.png")" style="width:30px;height:26px;margin-left:13px" /><a target="_blank" href="mailto:@item.Email" style="margin-left:5px">Send Email</a>
+                    }<br />
+                    @if (item.Website != null)
+                    { <img src="@Url.Content("~/Images/External_Link_icon-icons.com_55915.png")" style="width:38px;height:35px;margin-left:10px;margin-bottom:3px" /><a href="@item.Website" target="_blank" style="margin-left:5px">Visit Website</a>
+                    }
+                    @if (item.Pictures.Count != 0)
+                    { <a href="@Url.Action("Index", "Picture", new { id = item.ID })"><img src="@Url.Content("~/Images/download.jpeg")" style="width:40px;height:40px;margin-left:80px;margin-bottom:5px" /></a>
+                    }
+                    @if (item.FacebookLink != null)
+                    { <a href="@item.FacebookLink" target="_blank"><img src="@Url.Content("~/Images/images.png")" style="width:42px;height:42px;float:right;margin-bottom:4px;margin-right:120px;border-radius:8px" /></a>
+                    }
+                    @if (item.InstagramLink != null)
+                    { <a href="@item.InstagramLink" target="_blank"><img src="@Url.Content("~/Images/app-icon2.png")" style="width:40px;height:40px;float:right;margin-bottom:5px;margin-right:5px" /></a>
+                    }
+                </div>
+            </div>
+        </div>
+        <br />
+    }
+}
+else
+{
+    <h2> Not Found </h2>
+}

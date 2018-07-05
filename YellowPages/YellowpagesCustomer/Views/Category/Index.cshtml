@@ -1,0 +1,40 @@
+﻿@model YellowPagesDB.Category
+
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<h2>@Html.DisplayFor(model => Model.CategoryName)</h2>
+<br />
+<div class="table-responsive">
+    <table border="0" class="table">
+    <tr>
+        <td rowspan="4">
+        @if (Model.Picturelink != null)
+        {
+            var img = new FileInfo(Model.Picturelink);
+            <img style="" src="@Url.Content(String.Format("~/img/{0}", img.Name))" />
+        }
+        else
+        {
+            <img style="width:235px;height:235px" src="@Url.Content("~/img/empty.jpeg")" />
+        }</td>
+    </tr>
+    <tr>
+        <td style="padding-left:40px;font-size:24px;padding-top:14px">Type :</td>
+        <td style="padding-top:10px;font-size:20px">@Html.DisplayFor(model => Model.Type)</td>
+    </tr>
+    <tr>
+        <td style="padding-left:40px;padding-bottom:5px;font-size:24px">Location: </td>
+        <td style="padding-left:10px;padding-bottom:5px;font-size:20px">@Html.DisplayFor(model => Model.Unit.Country), @Html.DisplayFor(model => Model.Unit.City), @Html.DisplayFor(model => Model.Unit.Address)</td>
+    </tr>
+    @if(Model.Keywords!=null) {
+        <tr>
+        <td style="padding-left:40px;padding-bottom:30px;font-size:24px">Keywords: </td>
+        <td style="padding-left:10px;padding-bottom:50px;font-size:20px">@Html.DisplayFor(model => Model.Keywords)</td>
+        </tr>
+    }
+</table>
+<br />
+<h2><a style="font-size:22px" href="@Url.Action("Index", "Item", new { id = Model.ID })">See List of Items</a></h2>
+</div>

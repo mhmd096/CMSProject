@@ -1,0 +1,135 @@
+﻿@model List<YellowPagesDB.Category>
+    @Html.Partial("Search")
+    <!-- Banner -->
+    <br />
+
+    @if (Model != null)
+    {
+        <section class="banner bgwhite p-t-40 p-b-40">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
+                        <!-- block1 -->
+                        <div class="block1 hov-img-zoom pos-relative m-b-30">
+                            @if (Model[0].Picturelink != null)
+                            {
+                                var img = new FileInfo(Model[0].Picturelink);
+                                <img src="@Url.Content(String.Format("~/img/{0}", img.Name))" alt="IMG-BENNER">
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~/img/empty.jpeg")" />
+                            }
+                            <div class="block1-wrapbtn w-size2">
+                                <!-- Button -->
+                                <a href="@Url.Action("Index", "Category", new { id = Model[0].ID })" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                                    @Model[0].CategoryName
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- block1 -->
+                        <div class="block1 hov-img-zoom pos-relative m-b-30">
+                            @if (Model[1].Picturelink != null)
+                            {
+                                var img = new FileInfo(Model[1].Picturelink);
+                                <img src="@Url.Content(String.Format("~/img/{0}", img.Name))" alt="IMG-BENNER">
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~/img/empty.jpeg")" />
+                            }
+                            <div class="block1-wrapbtn w-size2">
+                                <!-- Button -->
+                                <a href="@Url.Action("Index", "Category", new { id = Model[1].ID })" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                                    @Model[1].CategoryName
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
+                        <!-- block1 -->
+                        <div class="block1 hov-img-zoom pos-relative m-b-30">
+                            @if (Model[2].Picturelink != null)
+                            {
+                                var img = new FileInfo(Model[2].Picturelink);
+                                <img src="@Url.Content(String.Format("~/img/{0}", img.Name))" alt="IMG-BENNER">
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~/img/empty.jpeg")" />
+                            }
+                            <div class="block1-wrapbtn w-size2">
+                                <!-- Button -->
+                                <a href="@Url.Action("Index", "Category", new { id = Model[2].ID })" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                                    @Model[2].CategoryName
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- block1 -->
+                        <div class="block1 hov-img-zoom pos-relative m-b-30">
+                            @if (Model[3].Picturelink != null)
+                            {
+                                var img = new FileInfo(Model[3].Picturelink);
+                                <img src="@Url.Content(String.Format("~/img/{0}", img.Name))" alt="IMG-BENNER">
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~/img/empty.jpeg")" />
+                            }
+                            <div class="block1-wrapbtn w-size2">
+                                <!-- Button -->
+                                <a href="@Url.Action("Index", "Category", new { id = Model[3].ID })" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                                    @Model[3].CategoryName
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
+                        <!-- block1 -->
+                        <div class="block1 hov-img-zoom pos-relative m-b-30">
+                            @if (Model[4].Picturelink != null)
+                            {
+                                var img = new FileInfo(Model[4].Picturelink);
+                                <img src="@Url.Content(String.Format("~/img/{0}", img.Name))" alt="IMG-BENNER">
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~/img/empty.jpeg")" />
+                            }
+                            <div class="block1-wrapbtn w-size2">
+                                <!-- Button -->
+                                <a href="@Url.Action("Index", "Category", new { id = Model[4].ID })" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                                    @Model[4].CategoryName
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- block2 -->
+                        <div class="block2 wrap-pic-w pos-relative m-b-30">
+                            <div class="block1 hov-img-zoom pos-relative m-b-30">
+                                @if (Model[5].Picturelink != null)
+                                {
+                                    var img = new FileInfo(Model[5].Picturelink);
+                                    <img src="@Url.Content(String.Format("~/img/{0}", img.Name))" alt="IMG-BENNER">
+                                }
+                                else
+                                {
+                                    <img src="@Url.Content("~/img/empty.jpeg")" />
+                                }
+                                <div class="block1-wrapbtn w-size2">
+                                    <!-- Button -->
+                                    <a href="@Url.Action("Index", "Category", new { id = Model[5].ID })" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                                        @Model[5].CategoryName
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }

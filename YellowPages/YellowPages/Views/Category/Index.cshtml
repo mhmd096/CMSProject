@@ -1,0 +1,82 @@
+﻿@model IEnumerable<YellowPagesDB.Category>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Categories</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Active)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Timestamp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Keywords)
+        </th>
+        <th>
+            Picture
+        </th>
+        <th></th>
+    </tr>
+@if (Model != null)
+{
+foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Order)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Active)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Timestamp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Keywords)
+        </td>
+        <td>
+            
+        @if(item.Picturelink!=null) {
+            var img = new FileInfo(item.Picturelink);
+            <img style="width:100px;height:100px" src="@Url.Content(String.Format("~/Images/{0}", img.Name))" />
+        }
+        else
+        {
+            <img style="width:100px;height:100px" src="@Url.Content("~/Images/empty.png")" />
+        }
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID }) |
+            @Html.ActionLink("List of Items", "Index", "Item", new { id = item.ID }, null)
+        </td>
+    </tr>
+            }}
+
+</table>
+<div>
+    @Html.ActionLink("Back","Index","Unit")
+</div>

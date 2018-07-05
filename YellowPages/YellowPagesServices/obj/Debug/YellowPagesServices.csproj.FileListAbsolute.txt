@@ -1,0 +1,17 @@
+C:\Users\Alaa\Documents\Visual Studio 2015\Projects\YellowPages\YellowPagesServices\bin\Debug\YellowPagesServices.dll
+C:\Users\Alaa\Documents\Visual Studio 2015\Projects\YellowPages\YellowPagesServices\bin\Debug\YellowPagesServices.pdb
+C:\Users\Alaa\Documents\Visual Studio 2015\Projects\YellowPages\YellowPagesServices\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Alaa\Documents\Visual Studio 2015\Projects\YellowPages\YellowPagesServices\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\Alaa\Documents\Visual Studio 2015\Projects\YellowPages\YellowPagesServices\bin\Debug\System.Web.Http.dll
+C:\Users\Alaa\Documents\Visual Studio 2015\Projects\YellowPages\YellowPagesServices\bin\Debug\System.Web.Http.WebHost.dll
+C:\Users\Alaa\Documents\Visual Studio 2015\Projects\YellowPages\YellowPagesServices\bin\Debug\YellowPagesDB.dll
+C:\Users\Alaa\Documents\Visual Studio 2015\Projects\YellowPages\YellowPagesServices\bin\Debug\EntityFramework.dll
+C:\Users\Alaa\Documents\Visual Studio 2015\Projects\YellowPages\YellowPagesServices\bin\Debug\YellowPagesDB.pdb
+C:\Users\Alaa\Documents\Visual Studio 2015\Projects\YellowPages\YellowPagesServices\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Alaa\Documents\Visual Studio 2015\Projects\YellowPages\YellowPagesServices\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\Alaa\Documents\Visual Studio 2015\Projects\YellowPages\YellowPagesServices\bin\Debug\System.Web.Http.xml
+C:\Users\Alaa\Documents\Visual Studio 2015\Projects\YellowPages\YellowPagesServices\bin\Debug\System.Web.Http.WebHost.xml
+C:\Users\Alaa\Documents\Visual Studio 2015\Projects\YellowPages\YellowPagesServices\bin\Debug\EntityFramework.xml
+C:\Users\Alaa\Documents\Visual Studio 2015\Projects\YellowPages\YellowPagesServices\obj\Debug\YellowPagesServices.csprojResolveAssemblyReference.cache
+C:\Users\Alaa\Documents\Visual Studio 2015\Projects\YellowPages\YellowPagesServices\obj\Debug\YellowPagesServices.dll
+C:\Users\Alaa\Documents\Visual Studio 2015\Projects\YellowPages\YellowPagesServices\obj\Debug\YellowPagesServices.pdb

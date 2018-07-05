@@ -1,0 +1,88 @@
+﻿@model IEnumerable<YellowPagesDB.Picture>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Items</h2>
+<p>
+    @Html.ActionLink("Add new Image", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Picture
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isMain)
+        </th>
+        <th>
+            Thumb
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Active)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Timestamp)
+        </th>
+        <th></th>
+    </tr>
+
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @if(item.Picturelink!=null) {
+                var img = new FileInfo(item.Picturelink);
+                <img style="width:100px;height:100px" src="@Url.Content(String.Format("~/Images/Items/{0}", img.Name))" />
+            }
+            else
+            {
+                <img style="width:100px;height:100px" src="@Url.Content("~/Images/Items/empty.png")" />
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isMain)
+        </td>
+        <td>
+            @if (item.ThumbLink != null)
+            {
+                var img = new FileInfo(item.ThumbLink);
+                <img style="width:100px;height:100px" src="@Url.Content(String.Format("~/Images/Items/{0}", img.Name))" />
+            }
+            else
+            {
+                <img style="width:100px;height:100px" src="@Url.Content("~/Images/Items/empty.png")" />
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Active)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Order)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Notes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Timestamp)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+        </td>
+    </tr>
+    }
+}
+
+</table>
+<div>
+    @Html.ActionLink("Back", "Index", "Item", new { id = Session["Catid"] }, null)
+</div>

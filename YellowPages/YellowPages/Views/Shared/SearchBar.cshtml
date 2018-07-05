@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+    <div class="container body-content" style="background-color:lightgray;position:relative;clear:both;height:80px"><br />
+        <div style="position:relative;float:left;width:50%">
+            @using (Html.BeginForm("SearchbyUnit", "Home", FormMethod.Get))
+            {
+                <input type="text" name="name" style="width:400%;height:38px" placeholder="Search by Unit name or Keyword" />
+                <input type="submit" value="Search" class="btn btn-primary"/>
+            }
+        </div>
+    <br />
+    </div>
+</body>
+</html>
+
